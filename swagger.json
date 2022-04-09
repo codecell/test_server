@@ -5,7 +5,7 @@
     "title": "Archimedes test API",
     "description": ""
   },
-  "host": "hidden-retreat-03498.herokuapp.com/",
+  "host": "hidden-retreat-03498.herokuapp.com",
   "basePath": "/api/",
   "tags": [
       {
@@ -14,7 +14,7 @@
       }
   ],
   "schemes": [
-      "https", "http"
+    "https"
   ],
   "consumes": [
     "application/json", "multipart/form-data"
@@ -64,15 +64,15 @@
               "in": "body",
               "description": "The details of the user data to be updated",
               "schema": {
-                "$ref": "#/definitions/updateProfileData"
+                "$ref": "#/definitions/updateUser"
               }
             }
         ],
         "responses": {
           "200": {
-          "description": "Updates ANY or all user object  data",
+          "description": "Updates a user data",
           "schema": {
-            "$ref": "#/definitions/getProfileData"
+            "$ref": "#/definitions/updateUserResponse"
           }
         },
         "404": {
@@ -216,20 +216,50 @@
         "success": { "type": "boolean", "default": "false" }
       }
     },
+    "updateUser": {
+      "properties":{
+        "email": {"type": "string", "description": "This is Read-only"},
+        "fullname": {"type": "string"},
+        "role": {"type": "string"}
+      } 
+    },
+    "updateUserResponse": {
+      "properties": {
+        "code": {
+          "type": "integer"
+        },
+        "data": {
+          "type": "object",
+          "properties":{
+            "id": {"type": "string"},
+            "email": {"type": "string"},
+            "fullname": {"type": "string"},
+            "role": {"type": "string"},
+            "createdAt": {
+              "type": "string"
+            },
+            "updatedAT": {
+              "type": "string"
+            }
+          }      
+        },
+        "message": { "type": "string" },
+        "success": {"type":"boolean"}
+      }
+    },
     "getAllUsers": {
       "properties": {
         "code": { "type": "number" , "description": "The status code of response", "default": 200},
         "data": {
           "type": "object",
-            "users": {
-              "type": "object",
-              "properties": {
-                "type": "array", 
-                "description": "All Users",
-                "items": {
-                  "$ref": "#/definitions/user"
-                }
+          "properties": {
+            "properties": {
+              "type": "array", 
+              "description": "Get All Users",
+              "items": {
+                "$ref": "#/definitions/user"
               }
+            }
           }
         },
         "message": { "type": "string" , "description": "success message"},

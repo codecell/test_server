@@ -6,7 +6,6 @@ const usersController = new UsersController();
 
 usersRoutes.route("/new")
 .post(usersController.createUser)
-// .get(usersController.getUserData);
 
 usersRoutes.route("/all")
 .get(usersController.viewUsers)
