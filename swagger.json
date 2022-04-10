@@ -218,6 +218,7 @@
     },
     "updateUser": {
       "properties":{
+        "id": {"type": "number", "description": "The ID of the user to be updated"},
         "email": {"type": "string", "description": "This is Read-only"},
         "fullname": {"type": "string"},
         "role": {"type": "string"}
