@@ -8,7 +8,6 @@ import bodyParser from "body-parser";
 import indexRoute from "./routes/index.routes"
 import usersRoutes from "./routes/user.routes";
 
-
 // Swagger docs
 import swaggerUi from 'swagger-ui-express'
 import swaggerDocument from '../swagger.json'
@@ -48,8 +47,7 @@ export default class App {
 
     try {
       await this.app.listen(port)
-
-      console.log("started!!!")
+      
       console.log(
 				boxen(`Server Listening on port: ${port}`, {
 					padding: 1,
