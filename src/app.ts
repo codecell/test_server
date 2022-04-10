@@ -1,5 +1,5 @@
 import boxen from "boxen";
-import express, { Application } from "express"
+import express, { Application, Request, Response } from "express"
 import morgan from "morgan";
 import cors from "cors";
 import bodyParser from "body-parser";
@@ -38,6 +38,9 @@ export default class App {
 
   routes () {
     this.app.use("/api/users", usersRoutes);
+    this.app.use("*", 
+      (req: Request, res: Response) => res.json({ status: 404, message: "Uh oh!, Page not found" })
+    );
   }
 
   async listen () {

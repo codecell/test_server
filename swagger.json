@@ -91,9 +91,9 @@
         "parameters": [],
         "responses": {
           "200": {
-          "description": "Property succesfully deleted",
+          "description": "User data succesfully deleted",
           "schema": {
-            "$ref": "#/definitions/deletePropertyRes"
+            "$ref": "#/definitions/deleteUserRes"
           }
         },
         "403": {
@@ -253,13 +253,26 @@
         "data": {
           "type": "object",
           "properties": {
-            "properties": {
+            "users": {
               "type": "array", 
-              "description": "Get All Users",
+              "description": "All Users in the sysyem",
               "items": {
                 "$ref": "#/definitions/user"
               }
             }
+          }
+        },
+        "message": { "type": "string" , "description": "success message"},
+        "success": { "type": "boolean" , "default": true }
+      }
+    },
+    "deleteUserRes": {
+      "properties": {
+        "code": { "type": "number" , "description": "The status code of response", "default": 200},
+        "data": {
+          "type": "object",
+          "properties": {
+            "result": {"type": "string", "default":"User data was deleted successfully"}
           }
         },
         "message": { "type": "string" , "description": "success message"},
